@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebBanHangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Pwd" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="CustomerID" Type="int" />
+  </EntityType>
+  <EntityType Name="Bill">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CartID" Type="int" />
+    <Property Name="TotalPrices" Type="float" />
+    <Property Name="DiscountPercent" Type="float" />
+    <Property Name="PayPrice" Type="float" />
+    <Property Name="CreateAt" Type="datetime" />
+    <Property Name="DeliveryDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerID" Type="int" />
+  </EntityType>
+  <EntityType Name="CartDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CartID" Type="int" />
+    <Property Name="ProductsID" Type="int" />
+    <Property Name="TheCount" Type="int" />
+    <Property Name="Price" Type="float" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Addresss" Type="nvarchar" MaxLength="1000" />
+    <Property Name="DateOfBirth" Type="datetime" />
+    <Property Name="Tel" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Prices" Type="float" />
+    <Property Name="Details" Type="nvarchar(max)" />
+    <Property Name="Sales" Type="int" />
+    <Property Name="CreateAt" Type="datetime" />
+    <Property Name="UpDateAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProductsImg">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="ImgLink" Type="varchar" MaxLength="1000" />
+    <Property Name="ImgName" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RolesName" Type="nvarchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Account__RoleID__1367E606">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill__CartID__276EDEB3">
+    <End Role="Cart" Type="Self.Cart" Multiplicity="0..1" />
+    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="CartID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cart__CustomerID__20C1E124">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CartDetai__CartI__239E4DCF">
+    <End Role="Cart" Type="Self.Cart" Multiplicity="0..1" />
+    <End Role="CartDetail" Type="Self.CartDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CartDetail">
+        <PropertyRef Name="CartID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CartDetai__Produ__24927208">
+    <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+    <End Role="CartDetail" Type="Self.CartDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CartDetail">
+        <PropertyRef Name="ProductsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__Catego__1B0907CE">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductsI__Produ__1DE57479">
+    <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+    <End Role="ProductsImg" Type="Self.ProductsImg" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductsImg">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebBanHangModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CartDetail" EntityType="Self.CartDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductsImg" EntityType="Self.ProductsImg" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Account__RoleID__1367E606" Association="Self.FK__Account__RoleID__1367E606">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill__CartID__276EDEB3" Association="Self.FK__Bill__CartID__276EDEB3">
+      <End Role="Cart" EntitySet="Cart" />
+      <End Role="Bill" EntitySet="Bill" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cart__CustomerID__20C1E124" Association="Self.FK__Cart__CustomerID__20C1E124">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CartDetai__CartI__239E4DCF" Association="Self.FK__CartDetai__CartI__239E4DCF">
+      <End Role="Cart" EntitySet="Cart" />
+      <End Role="CartDetail" EntitySet="CartDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CartDetai__Produ__24927208" Association="Self.FK__CartDetai__Produ__24927208">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="CartDetail" EntitySet="CartDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__Catego__1B0907CE" Association="Self.FK__Products__Catego__1B0907CE">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductsI__Produ__1DE57479" Association="Self.FK__ProductsI__Produ__1DE57479">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductsImg" EntitySet="ProductsImg" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

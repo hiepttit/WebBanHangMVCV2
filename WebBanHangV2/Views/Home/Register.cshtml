@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- fonts -->
+<link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+<!-- /fonts -->
+<!-- css -->
+<link href="~/css/Register.css" rel="stylesheet" />
+<div class="content-w3ls">
+    <div class="content-agile1">
+
+    </div>
+    <div class="content-agile2">
+        <form id="frmInputInsert">
+            <div class=" w3layouts">
+                <input type="text" id="firstname" name="Name" placeholder="Họ và tên" title="Please enter your First Name" required="">
+            </div>
+
+            <div class=" w3layouts">
+                <input type="text" id="address" name="Addresss" placeholder="Địa chỉ" title="Please enter a valid address" required="">
+            </div>
+
+            <div class=" w3layouts">
+                <input type="datetime" id="dateOfBirth" name="DateOfBirth" placeholder="Ngày sinh" title="Please enter a valid DateOfBirth" required="">
+            </div>
+
+            <div class=" w3layouts">
+                <input type="tel" id="telephone" name="Tel" placeholder="Số điện thoại" title="Please enter a valid telephone" required="">
+            </div>
+
+            <div class=" w3layouts">
+                <input type="email" id="email" name="Email" placeholder="Email@example.com" title="Please enter a valid email" required="">
+            </div>
+
+            <div class=" w3layouts">
+                <input type="text" id="username" name="UserName" placeholder="Tên đăng nhập" title="Please enter your User Name" required="">
+            </div>
+
+            <div class=" agileinfo">
+                <input type="password" class="lock" name="Pwd" placeholder="Mật khẩu" id="password1" required="">
+            </div>
+
+            <div class=" agileinfo">
+                <input type="password" class="lock" name="confirm-password" placeholder="Nhập lại mật khẩu" id="password2" required="">
+            </div>
+
+            <input type="button" class="register" onclick="insert()" value="đăng kí">
+        </form>
+        <script type="text/javascript">
+            window.onload = function () {
+                document.getElementById("password1").onchange = validatePassword;
+                document.getElementById("password2").onchange = validatePassword;
+            }
+            function validatePassword() {
+                var pass2 = document.getElementById("password2").value;
+                var pass1 = document.getElementById("password1").value;
+                if (pass1 != pass2)
+                    document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+                else
+                    document.getElementById("password2").setCustomValidity('');
+                //empty string means no validation error
+            }
+        </script>
+        <p class="wthree w3l">Hoặc đăng kí với</p>
+        <ul class="social-agileinfo wthree2">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<script>
+    function insert() {
+        var fd = new FormData(document.getElementById("frmInputInsert"));
+        // fd.append('file', input.files[0]);
+        $.ajax({
+            url: '/Home/InsertRegister',
+            data: fd,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function (data) {
+                document.location.href = "/Home/index";
+            }
+        });
+    }
+</script>

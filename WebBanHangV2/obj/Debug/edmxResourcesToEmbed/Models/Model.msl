@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebBanHangModelStoreContainer" CdmEntityContainer="WebBanHangEntities">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="WebBanHangModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bills">
+      <EntityTypeMapping TypeName="WebBanHangModel.Bill">
+        <MappingFragment StoreEntitySet="Bill">
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+          <ScalarProperty Name="PayPrice" ColumnName="PayPrice" />
+          <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+          <ScalarProperty Name="TotalPrices" ColumnName="TotalPrices" />
+          <ScalarProperty Name="CartID" ColumnName="CartID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carts">
+      <EntityTypeMapping TypeName="WebBanHangModel.Cart">
+        <MappingFragment StoreEntitySet="Cart">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CartDetails">
+      <EntityTypeMapping TypeName="WebBanHangModel.CartDetail">
+        <MappingFragment StoreEntitySet="CartDetail">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="TheCount" ColumnName="TheCount" />
+          <ScalarProperty Name="ProductsID" ColumnName="ProductsID" />
+          <ScalarProperty Name="CartID" ColumnName="CartID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="WebBanHangModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="WebBanHangModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Addresss" ColumnName="Addresss" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="WebBanHangModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="UpDateAt" ColumnName="UpDateAt" />
+          <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+          <ScalarProperty Name="Sales" ColumnName="Sales" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Prices" ColumnName="Prices" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductsImgs">
+      <EntityTypeMapping TypeName="WebBanHangModel.ProductsImg">
+        <MappingFragment StoreEntitySet="ProductsImg">
+          <ScalarProperty Name="ImgName" ColumnName="ImgName" />
+          <ScalarProperty Name="ImgLink" ColumnName="ImgLink" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="WebBanHangModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RolesName" ColumnName="RolesName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

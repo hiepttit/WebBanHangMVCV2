@@ -1,0 +1,568 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WebBanHangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Pwd" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="CustomerID" Type="int" />
+        </EntityType>
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CartID" Type="int" />
+          <Property Name="TotalPrices" Type="float" />
+          <Property Name="DiscountPercent" Type="float" />
+          <Property Name="PayPrice" Type="float" />
+          <Property Name="CreateAt" Type="datetime" />
+          <Property Name="DeliveryDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+        </EntityType>
+        <EntityType Name="CartDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CartID" Type="int" />
+          <Property Name="ProductsID" Type="int" />
+          <Property Name="TheCount" Type="int" />
+          <Property Name="Price" Type="float" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Addresss" Type="nvarchar" MaxLength="1000" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Tel" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Prices" Type="float" />
+          <Property Name="Details" Type="nvarchar(max)" />
+          <Property Name="Sales" Type="int" />
+          <Property Name="CreateAt" Type="datetime" />
+          <Property Name="UpDateAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProductsImg">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="ImgLink" Type="varchar" MaxLength="1000" />
+          <Property Name="ImgName" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolesName" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Account__RoleID__1367E606">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bill__CartID__276EDEB3">
+          <End Role="Cart" Type="Self.Cart" Multiplicity="0..1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cart">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="CartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__CustomerID__20C1E124">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CartDetai__CartI__239E4DCF">
+          <End Role="Cart" Type="Self.Cart" Multiplicity="0..1" />
+          <End Role="CartDetail" Type="Self.CartDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cart">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CartDetail">
+              <PropertyRef Name="CartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CartDetai__Produ__24927208">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="CartDetail" Type="Self.CartDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CartDetail">
+              <PropertyRef Name="ProductsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__Catego__1B0907CE">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductsI__Produ__1DE57479">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="ProductsImg" Type="Self.ProductsImg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductsImg">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebBanHangModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CartDetail" EntityType="Self.CartDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductsImg" EntityType="Self.ProductsImg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Account__RoleID__1367E606" Association="Self.FK__Account__RoleID__1367E606">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bill__CartID__276EDEB3" Association="Self.FK__Bill__CartID__276EDEB3">
+            <End Role="Cart" EntitySet="Cart" />
+            <End Role="Bill" EntitySet="Bill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__CustomerID__20C1E124" Association="Self.FK__Cart__CustomerID__20C1E124">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CartDetai__CartI__239E4DCF" Association="Self.FK__CartDetai__CartI__239E4DCF">
+            <End Role="Cart" EntitySet="Cart" />
+            <End Role="CartDetail" EntitySet="CartDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CartDetai__Produ__24927208" Association="Self.FK__CartDetai__Produ__24927208">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="CartDetail" EntitySet="CartDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__Catego__1B0907CE" Association="Self.FK__Products__Catego__1B0907CE">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductsI__Produ__1DE57479" Association="Self.FK__ProductsI__Produ__1DE57479">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductsImg" EntitySet="ProductsImg" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebBanHangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WebBanHangEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="WebBanHangModel.Account" />
+          <EntitySet Name="Bills" EntityType="WebBanHangModel.Bill" />
+          <EntitySet Name="Carts" EntityType="WebBanHangModel.Cart" />
+          <EntitySet Name="CartDetails" EntityType="WebBanHangModel.CartDetail" />
+          <EntitySet Name="Categories" EntityType="WebBanHangModel.Category" />
+          <EntitySet Name="Customers" EntityType="WebBanHangModel.Customer" />
+          <EntitySet Name="Products" EntityType="WebBanHangModel.Product" />
+          <EntitySet Name="ProductsImgs" EntityType="WebBanHangModel.ProductsImg" />
+          <EntitySet Name="Roles" EntityType="WebBanHangModel.Role" />
+          <AssociationSet Name="FK__Account__RoleID__1367E606" Association="WebBanHangModel.FK__Account__RoleID__1367E606">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bill__CartID__276EDEB3" Association="WebBanHangModel.FK__Bill__CartID__276EDEB3">
+            <End Role="Cart" EntitySet="Carts" />
+            <End Role="Bill" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__CustomerID__20C1E124" Association="WebBanHangModel.FK__Cart__CustomerID__20C1E124">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CartDetai__CartI__239E4DCF" Association="WebBanHangModel.FK__CartDetai__CartI__239E4DCF">
+            <End Role="Cart" EntitySet="Carts" />
+            <End Role="CartDetail" EntitySet="CartDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CartDetai__Produ__24927208" Association="WebBanHangModel.FK__CartDetai__Produ__24927208">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="CartDetail" EntitySet="CartDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__Catego__1B0907CE" Association="WebBanHangModel.FK__Products__Catego__1B0907CE">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProductsI__Produ__1DE57479" Association="WebBanHangModel.FK__ProductsI__Produ__1DE57479">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductsImg" EntitySet="ProductsImgs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Pwd" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="CustomerID" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="WebBanHangModel.FK__Account__RoleID__1367E606" FromRole="Account" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CartID" Type="Int32" />
+          <Property Name="TotalPrices" Type="Double" />
+          <Property Name="DiscountPercent" Type="Double" />
+          <Property Name="PayPrice" Type="Double" />
+          <Property Name="CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Cart" Relationship="WebBanHangModel.FK__Bill__CartID__276EDEB3" FromRole="Bill" ToRole="Cart" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <NavigationProperty Name="Bills" Relationship="WebBanHangModel.FK__Bill__CartID__276EDEB3" FromRole="Cart" ToRole="Bill" />
+          <NavigationProperty Name="Customer" Relationship="WebBanHangModel.FK__Cart__CustomerID__20C1E124" FromRole="Cart" ToRole="Customer" />
+          <NavigationProperty Name="CartDetails" Relationship="WebBanHangModel.FK__CartDetai__CartI__239E4DCF" FromRole="Cart" ToRole="CartDetail" />
+        </EntityType>
+        <EntityType Name="CartDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CartID" Type="Int32" />
+          <Property Name="ProductsID" Type="Int32" />
+          <Property Name="TheCount" Type="Int32" />
+          <Property Name="Price" Type="Double" />
+          <NavigationProperty Name="Cart" Relationship="WebBanHangModel.FK__CartDetai__CartI__239E4DCF" FromRole="CartDetail" ToRole="Cart" />
+          <NavigationProperty Name="Product" Relationship="WebBanHangModel.FK__CartDetai__Produ__24927208" FromRole="CartDetail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="WebBanHangModel.FK__Products__Catego__1B0907CE" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Addresss" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Tel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Carts" Relationship="WebBanHangModel.FK__Cart__CustomerID__20C1E124" FromRole="Customer" ToRole="Cart" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Prices" Type="Double" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sales" Type="Int32" />
+          <Property Name="CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="UpDateAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CartDetails" Relationship="WebBanHangModel.FK__CartDetai__Produ__24927208" FromRole="Product" ToRole="CartDetail" />
+          <NavigationProperty Name="Category" Relationship="WebBanHangModel.FK__Products__Catego__1B0907CE" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="ProductsImgs" Relationship="WebBanHangModel.FK__ProductsI__Produ__1DE57479" FromRole="Product" ToRole="ProductsImg" />
+        </EntityType>
+        <EntityType Name="ProductsImg">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="ImgLink" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ImgName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="WebBanHangModel.FK__ProductsI__Produ__1DE57479" FromRole="ProductsImg" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolesName" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accounts" Relationship="WebBanHangModel.FK__Account__RoleID__1367E606" FromRole="Role" ToRole="Account" />
+        </EntityType>
+        <Association Name="FK__Account__RoleID__1367E606">
+          <End Type="WebBanHangModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="WebBanHangModel.Account" Role="Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bill__CartID__276EDEB3">
+          <End Type="WebBanHangModel.Cart" Role="Cart" Multiplicity="0..1" />
+          <End Type="WebBanHangModel.Bill" Role="Bill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cart">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Bill">
+              <PropertyRef Name="CartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__CustomerID__20C1E124">
+          <End Type="WebBanHangModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="WebBanHangModel.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CartDetai__CartI__239E4DCF">
+          <End Type="WebBanHangModel.Cart" Role="Cart" Multiplicity="0..1" />
+          <End Type="WebBanHangModel.CartDetail" Role="CartDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cart">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CartDetail">
+              <PropertyRef Name="CartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CartDetai__Produ__24927208">
+          <End Type="WebBanHangModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="WebBanHangModel.CartDetail" Role="CartDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CartDetail">
+              <PropertyRef Name="ProductsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__Catego__1B0907CE">
+          <End Type="WebBanHangModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="WebBanHangModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProductsI__Produ__1DE57479">
+          <End Type="WebBanHangModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="WebBanHangModel.ProductsImg" Role="ProductsImg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductsImg">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebBanHangModelStoreContainer" CdmEntityContainer="WebBanHangEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="WebBanHangModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bills">
+            <EntityTypeMapping TypeName="WebBanHangModel.Bill">
+              <MappingFragment StoreEntitySet="Bill">
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+                <ScalarProperty Name="PayPrice" ColumnName="PayPrice" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+                <ScalarProperty Name="TotalPrices" ColumnName="TotalPrices" />
+                <ScalarProperty Name="CartID" ColumnName="CartID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="WebBanHangModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CartDetails">
+            <EntityTypeMapping TypeName="WebBanHangModel.CartDetail">
+              <MappingFragment StoreEntitySet="CartDetail">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TheCount" ColumnName="TheCount" />
+                <ScalarProperty Name="ProductsID" ColumnName="ProductsID" />
+                <ScalarProperty Name="CartID" ColumnName="CartID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="WebBanHangModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="WebBanHangModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Addresss" ColumnName="Addresss" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="WebBanHangModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="UpDateAt" ColumnName="UpDateAt" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+                <ScalarProperty Name="Sales" ColumnName="Sales" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Prices" ColumnName="Prices" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductsImgs">
+            <EntityTypeMapping TypeName="WebBanHangModel.ProductsImg">
+              <MappingFragment StoreEntitySet="ProductsImg">
+                <ScalarProperty Name="ImgName" ColumnName="ImgName" />
+                <ScalarProperty Name="ImgLink" ColumnName="ImgLink" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="WebBanHangModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RolesName" ColumnName="RolesName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

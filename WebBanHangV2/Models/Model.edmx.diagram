@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="09ad6a63cf054c9cbde4c50fb0fc466f" Name="Diagram1">
+        <EntityTypeShape EntityType="WebBanHangModel.Account" Width="1.5" PointX="10" PointY="0.875" />
+        <EntityTypeShape EntityType="WebBanHangModel.Bill" Width="1.5" PointX="5.25" PointY="9.375" />
+        <EntityTypeShape EntityType="WebBanHangModel.Cart" Width="1.5" PointX="3" PointY="7.625" />
+        <EntityTypeShape EntityType="WebBanHangModel.CartDetail" Width="1.5" PointX="5.25" PointY="2.5" />
+        <EntityTypeShape EntityType="WebBanHangModel.Category" Width="1.5" PointX="0.75" PointY="2.875" />
+        <EntityTypeShape EntityType="WebBanHangModel.Customer" Width="1.5" PointX="0.75" PointY="7.5" />
+        <EntityTypeShape EntityType="WebBanHangModel.Product" Width="1.5" PointX="3" PointY="2" />
+        <EntityTypeShape EntityType="WebBanHangModel.ProductsImg" Width="1.5" PointX="5.25" PointY="5.75" />
+        <EntityTypeShape EntityType="WebBanHangModel.Role" Width="1.5" PointX="7.75" PointY="1.25" />
+        <AssociationConnector Association="WebBanHangModel.FK__Account__RoleID__1367E606" />
+        <AssociationConnector Association="WebBanHangModel.FK__Bill__CartID__276EDEB3" />
+        <AssociationConnector Association="WebBanHangModel.FK__Cart__CustomerID__20C1E124" />
+        <AssociationConnector Association="WebBanHangModel.FK__CartDetai__CartI__239E4DCF" />
+        <AssociationConnector Association="WebBanHangModel.FK__CartDetai__Produ__24927208" />
+        <AssociationConnector Association="WebBanHangModel.FK__Products__Catego__1B0907CE" />
+        <AssociationConnector Association="WebBanHangModel.FK__ProductsI__Produ__1DE57479" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
