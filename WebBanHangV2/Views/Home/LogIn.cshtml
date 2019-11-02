@@ -59,7 +59,15 @@
             contentType: "application/json",
             success: function (response) {
                 if (response.Success) {
-                    document.location.href = "/Home/index";
+                    if (response.Success == "Admin")
+                    {
+                        document.location.href = "/Admin";
+                    }
+                    else
+                    {
+                        document.location.href = "/Home/index";
+                    }
+                    
                 }
                 else {
                     alert("Sai tên đăng nhập hoặc password");

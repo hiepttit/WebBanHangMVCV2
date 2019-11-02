@@ -99,6 +99,26 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\css\all.css" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-brands-400.svg" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-light-300.svg" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-regular-400.svg" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-solid-900.svg" />
+    <Content Include="Areas\Admin\libs\css\bootstrap-grid.css" />
+    <Content Include="Areas\Admin\libs\css\bootstrap-grid.min.css" />
+    <Content Include="Areas\Admin\libs\css\bootstrap-reboot.css" />
+    <Content Include="Areas\Admin\libs\css\bootstrap-reboot.min.css" />
+    <Content Include="Areas\Admin\libs\css\bootstrap.css" />
+    <Content Include="Areas\Admin\libs\css\bootstrap.min.css" />
+    <Content Include="Areas\Admin\libs\css\login.css" />
+    <Content Include="Areas\Admin\libs\css\tongquan.css" />
+    <Content Include="Areas\Admin\libs\jquery.min.js" />
+    <Content Include="Areas\Admin\libs\js\bootstrap.bundle.js" />
+    <Content Include="Areas\Admin\libs\js\bootstrap.bundle.min.js" />
+    <Content Include="Areas\Admin\libs\js\bootstrap.js" />
+    <Content Include="Areas\Admin\libs\js\bootstrap.min.js" />
+    <Content Include="Areas\Admin\libs\js\script.js" />
+    <Content Include="Areas\Admin\libs\pop.min.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="css\animate.css" />
     <Content Include="css\bootstrap.min.css" />
@@ -352,6 +372,37 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\MasterAdmin.cshtml" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-brands-400.eot" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-brands-400.ttf" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-brands-400.woff" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-brands-400.woff2" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-light-300.eot" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-light-300.ttf" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-light-300.woff" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-light-300.woff2" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-regular-400.eot" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-regular-400.ttf" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-regular-400.woff" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-regular-400.woff2" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-solid-900.eot" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-solid-900.ttf" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-solid-900.woff" />
+    <Content Include="Areas\Admin\fontawesome-pro-5.0.13\webfonts\fa-solid-900.woff2" />
+    <Content Include="Areas\Admin\libs\css\bootstrap-grid.css.map" />
+    <Content Include="Areas\Admin\libs\css\bootstrap-grid.min.css.map" />
+    <Content Include="Areas\Admin\libs\css\bootstrap-reboot.css.map" />
+    <Content Include="Areas\Admin\libs\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Areas\Admin\libs\css\bootstrap.css.map" />
+    <Content Include="Areas\Admin\libs\css\bootstrap.min.css.map" />
+    <Content Include="Areas\Admin\libs\js\bootstrap.bundle.js.map" />
+    <Content Include="Areas\Admin\libs\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Areas\Admin\libs\js\bootstrap.js.map" />
+    <Content Include="Areas\Admin\libs\js\bootstrap.min.js.map" />
+    <Content Include="Areas\Admin\Views\ProductAD\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HomeAD\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Customer.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="icon-fonts\Flaticon.svg" />
     <Content Include="icon-fonts\fontawesome-webfont.svg" />
@@ -423,6 +474,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeADController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductADController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -496,6 +551,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

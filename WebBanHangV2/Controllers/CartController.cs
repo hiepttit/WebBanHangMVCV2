@@ -175,7 +175,7 @@ namespace WebBanHangV2.Controllers
                     return RedirectToAction("index", "Home");
                 }
             }
-            return RedirectToAction("cart");
+            return RedirectToAction("LogIn", "Home");
         }
     }
 }

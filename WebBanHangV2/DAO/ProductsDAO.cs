@@ -13,6 +13,11 @@ namespace WebBanHangV2.DAO
             var lst = Model.Products.OrderBy(p => p.ID).ToList();
             return lst;
         }
+        public List<Customer> GetAllCustomer()
+        {
+            var lst = Model.Customers.OrderBy(p => p.ID).ToList();
+            return lst;
+        }
         public List<Category> GetAllCategory()
         {
             var lst = Model.Categories.ToList();

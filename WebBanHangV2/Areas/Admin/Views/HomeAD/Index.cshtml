@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/MasterAdmin.cshtml";
+}
+<link rel="stylesheet" href="~/Areas/Admin/libs/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+
+<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+    <div class="container " style="float: right">
+        <div class="row mt-1 ml-2 ">
+            <span class="tille "> <b><u><i class="fas fa-chart-pie"></i> Hoạt Động hôm nay</u></b></span>
+        </div>
+        <div class="row mt-4 ml-1">
+            <div class="col-md-3 col-sm-6 col-12 mb-2 m">
+                <div class="card"
+                     style=" max-height:150px;min-height:150px;background: rgb(241, 68, 68);color: white;text-align: left;">
+                    <div class="card-body ">
+
+                        <h5 class="card-title pl-3"><i class="fas fa-dollar-sign pt-3"></i><br>Tiền bán hàng <br>0</h5>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12 mb-2 ">
+                <div class="card" style="max-height:150px;min-height:150px;background: greenyellow;color: white">
+                    <div class="card-body">
+                        <h5 class="card-title pl-3">
+                            <i class="fas fa-shopping-cart pt-3" style=></i> <br>Số đơn
+                            hàng:0<br>Số
+                            sản phẩm:0
+                        </h5>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12 mb-2">
+                <div class="card" style="max-height:150px;min-height:150px;background: orange;color: white">
+                    <div class="card-body">
+                        <h5 class="card-title pl-3"><i class="fas fa-undo pt-3"></i><br> Hàng khách trả<br>0</h5>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12 mb-2">
+                <div class="card" style="max-height:150px;min-height:150px;background:#007bff;color: white ">
+                    <div class="card-body">
+                        <h5 class="card-title pl-3"><i class="fas fa-cloud pt-3"></i> <br>Đơn hàng web<br>0</h5>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3 pt-3 ml-1 pb-0" style="background:#e3e9ee">
+            <div class="col-md-4 col-sm-6 col-12 pl-0 ">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-header" style="background:white;color:black;">
+                        <b>
+                            <i class="fas fa-chart-pie"></i>
+                            Hoạt
+                            động
+                        </b>
+                    </div>
+                    <div class="card-body" style="background:white;color: black">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text">Tiền bán hàng<u>0</u></p>
+                        <p class="card-text">Số đơn hàng<u>0</u></p>
+                        <p class="card-text">Số sản phẩm<u>0</u></p>
+                        <p class="card-text">Khách hàng trả<u>0</u></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-12 pl-0">
+                <div class="card text-white bg-primary mb-3" style=>
+                    <div class="card-header" style="background:white;color:black;">
+                        <b>
+                            <i class="fas fa-info-circle"></i>
+                            Thông tin kho
+                        </b>
+                    </div>
+                    <div class="card-body" style="background:white;color: black">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text">Tồn kho<u>0</u></p>
+                        <p class="card-text">Hết hàng<u>0</u></p>
+                        <p class="card-text">Sắp hết hàng<u>0</u></p>
+                        <p class="card-text">Vượt định mức<u>0</u></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-12 pl-0">
+                <div class="card text-white bg-primary mb-3" id="ipad">
+                    <div class="card-header" style="background:white;color: black">
+                        <b>
+                            <i class="fas fa-info-circle"></i>
+                            Thông tin sản phẩm
+                        </b>
+                    </div>
+                    <div class="card-body" style="background:white;color: black">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text">Sản phẩm/Nhà sản xuất<u>0</u></p>
+                        <p class="card-text">Chưa làm giá bán<u>0</u></p>
+                        <p class="card-text">Chưa nhập giá mua<u>0</u></p>
+                        <p class="card-text">Hàng chưa phân loại<u>0</u></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -98,6 +98,11 @@ namespace WebBanHangV2.Controllers
             {
                 var abc = data.FirstOrDefault(p => p.UserName == userid);
                 Session["User"] = data.FirstOrDefault(p => p.UserName == userid);
+                if (userid=="admin")
+                {
+                    return Json(new { Success = "Admin" }, JsonRequestBehavior.AllowGet);
+                }
+                Session["UserID"] = userid;
                 return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
             }
 

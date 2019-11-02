@@ -1,0 +1,296 @@
+﻿@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Areas/Admin/Views/Shared/MasterAdmin.cshtml";
+    var lst = ViewBag.lstCt;
+}
+
+<style>
+    .btn-primary {
+        margin-top: 10px;
+    }
+</style>
+<div class="container">
+    <h2>Tổng sản phẩm là: @lst.Count</h2>
+    <table class="table table-bordered" id="tbProduct">
+        <thead>
+            <tr>
+                <th>
+                    Mã
+                </th>
+                <th>
+                    Họ Tên
+                </th>
+                <th>
+                    Địa chỉ
+                </th>
+                <th>
+                    Ngày sinh
+                </th>
+                <th>
+                    Số điện thoại
+                </th>
+                <th>
+                    Email
+                </th>
+                <th class="text-center">
+                    Chức Năng
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in lst)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.Name</td>
+                    <td>@item.Addresss</td>
+                    <td>@item.DateOfBirth</td>
+                    <td>@item.Tel</td>
+                    <td>@item.Email</td>
+                    <td class="text-center">
+                        <button type="button" style="width:40%" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="myFunction(@item.ID,'@item.Name','@item.Addresss',@item.DateOfBirth',@item.Tel',@item.Email)">Update</button>
+                        <button type="button" style="width:40%" class="btn btn-primary" data-toggle="modal" data-target="#myModalDelete" onclick="myFunctionDelete(@item.ID,'@item.Name','@item.Addresss',@item.DateOfBirth',@item.Tel',@item.Email">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot class="table-secondary">
+            <tr>
+                <td colspan=" 5" class="text-center">
+                    <button type="button" style="width:40%" class="btn btn-primary" data-toggle="modal" data-target="#myModalInsert">Insert</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Header</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="frmInput">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="IDCT" type="number" class="form-control" name="ID" placeholder="ID">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="Name" type="text" class="form-control" name="Name" placeholder="Name">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="Detail" type="text" class="form-control" name="Addresss" placeholder="Addresss">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="dateOfBirth" type="datetime" class="form-control" name="DateOfBirth" placeholder="DateOfBirth">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="tel" type="number" class="form-control" name="Tel" placeholder="Tel">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="email" type="email" class="form-control" name="Email" placeholder="Email">
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="save()">Lưu</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModalInsert" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Header</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="frmInputInsert">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="IDCT" type="number" class="form-control" name="ID" placeholder="ID">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="Name" type="text" class="form-control" name="Name" placeholder="Name">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="Detail" type="text" class="form-control" name="Addresss" placeholder="Addresss">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="dateOfBirth" type="datetime" class="form-control" name="DateOfBirth" placeholder="DateOfBirth">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="tel" type="number" class="form-control" name="Tel" placeholder="Tel">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="email" type="email" class="form-control" name="Email" placeholder="Email">
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="insert()">Thêm</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModalDelete" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Header</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="frmInputDelete">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="IDCT" type="number" class="form-control" name="ID" placeholder="ID">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="Name" type="text" class="form-control" name="Name" placeholder="Name">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="Detail" type="text" class="form-control" name="Addresss" placeholder="Addresss">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="dateOfBirth" type="datetime" class="form-control" name="DateOfBirth" placeholder="DateOfBirth">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="tel" type="number" class="form-control" name="Tel" placeholder="Tel">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="email" type="email" class="form-control" name="Email" placeholder="Email">
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="Xoa()">Xóa</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function myFunction(ID, Name, Addresss, DateOfBirth, Tel, Email) {
+        debugger
+        document.getElementById("IDCT").value = ID;
+        document.getElementById("Name").value = Name;
+        document.getElementById("Addresss").value = Addresss;
+        document.getElementById("DateOfBirth").value = DateOfBirth;
+        document.getElementById("Tel").value = Tel;
+        document.getElementById("Email").value = Email;
+        return;
+    }
+    function myFunctionDelete(id, name, detail, price) {
+        document.getElementById("IDCTDelete").value = id;
+        document.getElementById("NameDelete").value = name;
+        document.getElementById("DetailDelete").value = detail;
+        document.getElementById("PriceDelete").value = price;
+        return;
+    }
+    function insert() {
+        var fd = new FormData(document.getElementById("frmInputInsert"));
+        // fd.append('file', input.files[0]);
+        $.ajax({
+            url: '/Customer/Insert',
+            data: fd,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function (data) {
+                $('#myModalInsert').modal('hide');
+            }
+        });
+    }
+    function save() {
+        var fd = new FormData(document.getElementById("frmInput"));
+        // fd.append('file', input.files[0]);
+
+        $.ajax({
+            url: '/Customer/Save',
+            data: fd,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function (data) {
+                $('#myModal').modal('hide');
+            }
+        });
+    }
+    function Xoa() {
+        var fd = new FormData(document.getElementById("frmInputDelete"));
+        // fd.append('file', input.files[0]);
+        $.ajax({
+            url: '/Customer/Delete',
+            data: fd,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function (data) {
+                //alert(data);
+                $('#myModalDelete').modal('hide');
+            }
+        });
+    }
+    $(document).ready(function() {
+        $('#tbProduct').DataTable();
+    } );
+    $(document).ready(function(){
+        // convert selects already on the page at dom load
+        $('select.form-control').combobox();
+
+        $('#it').click(function(e){
+            $('ul.dropdown-menu').toggle();
+        });
+    });
+    $(document).ready(function () {
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img-upload').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#imageUploadForm").change(function () {
+            readURL(this);
+        });
+    });
+</script>
+
+
+

@@ -17,11 +17,21 @@
                 </div>
                 <div class="col-xl-4 col-lg-5">
                     <div class="user-panel">
-                        <div class="up-item">
-                            <i class="flaticon-profile"></i>
-                            <a href="@Url.Content("/Home/LogIn")">Sign</a> In or <a href="@Url.Content("/Home/Register")">Create Account</a>
-                        </div>
-                        @Html.Action("CartPartial","Cart")
+                        @if (Session["UserID"] == null)
+                        {
+                            <div class="up-item">
+                                <i class="flaticon-profile"></i>
+                                <a href="@Url.Content("/Home/LogIn")">Sign</a> In or <a href="@Url.Content("/Home/Register")">Create Account</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="up-item">
+                                <i class="flaticon-profile"></i>
+                                <a href="@Url.Content("/Home/LogIn")">@Session["UserID"] </a> <span style="margin-left:70px"></span> <i class="flaticon-logout"></i><a href="@Url.Content("/Home/Register")">LogOut</a>
+                            </div>
+                        }
+                        @Html.Action("CartPartial", "Cart")
                     </div>
                 </div>
             </div>

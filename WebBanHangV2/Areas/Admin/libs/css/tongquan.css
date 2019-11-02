@@ -1,0 +1,500 @@
+#area1 {
+    width: 100%;
+}
+
+
+
+
+.tille {
+    color: #007bff;
+    background: #e3e9ee;
+
+}
+
+.nav-link {
+    color: black;
+}
+
+.card-text u {
+    float: right;
+}
+
+.col-4 {
+    background: #e3e9ee;
+}
+
+.card-body {
+    padding: 0.5rem;
+
+}
+
+#select {
+    width: 20px;
+    height: 20px;
+    margin-left: 30%;
+}
+
+.alert {
+    width: 100%;
+}
+
+.navbar-nav {
+    margin-left: 80%;
+}
+
+.btn_menu_out {
+    display: none;
+}
+
+.btn_menu_in {
+    display: none;
+}
+
+.btn_menu_in i {
+    font-size: 30px;
+    color: white;
+}
+
+.navbar-light .navbar-toggler {
+    border-color: white;
+}
+
+#select {
+    width: 20px;
+    height: 20px;
+    margin-left: 30%;
+}
+
+.alert {
+    width: 100%;
+}
+
+.tille {
+    background: #e3e9ee;
+}
+
+@media only screen and (max-width: 1400px) {
+    .px_0 {
+        padding-left: 0 !important;
+        padding-right: 0 !important
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .col-sm-2 {
+
+        max-width: 0;
+    }
+
+    .col-sm-10 {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+
+    .btn_menu_out {
+        width: 40px;
+        height: 40px;
+        ;
+        display: block;
+        text-align: center;
+        padding: 3px;
+        background: #06065e;
+        position: absolute;
+
+        left: 10px;
+        cursor: pointer;
+    }
+
+    .btn_menu_out i {
+        font-size: 30px;
+        color: white;
+    }
+
+
+    .Show_right {
+        max-width: 16.666667%;
+
+    }
+
+    .Show_left {
+        max-width: 83.333333%;
+
+
+
+    }
+
+    .Show_content {
+        display: flex;
+
+    }
+
+    .Show_icon_out {
+        top: -827px;
+        display: none;
+    }
+
+    .btn_menu_in {
+        width: 40px;
+        height: 40px;
+        ;
+        display: none;
+        text-align: center;
+        padding: 3px;
+        background: #06065e;
+        position: absolute;
+
+        left: 10px;
+        cursor: pointer;
+    }
+
+    .Show_icon_in {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 1350px) {
+    .px_0 {
+        padding-right: 15px !important;
+        padding-left: 15px !important;
+    }
+}
+
+@media only screen and (max-width: 975px) {
+    #btn-1 {
+        margin-right: 25%;
+    }
+
+    #btn-2 {
+        float: none;
+        margin-right: 37%;
+    }
+
+    #btn-3 {
+        margin-right: 45%;
+    }
+
+    #btn-4 {
+        margin-right: 22%;
+    }
+
+    .navbar-toggler {
+        margin-left: 80%;
+
+    }
+
+    .navbar-nav {
+        float: right;
+    }
+
+    .navbar-nav .dropdown-menu {
+        float: right;
+    }
+
+    .dropdown,
+    .dropup {
+        width: 150px;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .col-sm-2 {
+
+        max-width: 0;
+    }
+
+    .col-sm-10 {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+
+    .btn_menu_out {
+        width: 40px;
+        height: 40px;
+        ;
+        display: block;
+        text-align: center;
+        padding: 3px;
+        background: #06065e;
+        position: absolute;
+
+        left: 10px;
+        cursor: pointer;
+    }
+
+    .btn_menu_out i {
+        font-size: 30px;
+        color: white;
+    }
+
+
+    .Show_right {
+        max-width: 16.666667%;
+
+    }
+
+    .Show_left {
+        max-width: 83.333333%;
+
+
+
+    }
+
+    .Show_content {
+        display: flex;
+
+    }
+
+    .Show_icon_out {
+        top: -827px;
+        display: none;
+    }
+
+    .btn_menu_in {
+        width: 40px;
+        height: 40px;
+        ;
+        display: none;
+        text-align: center;
+        padding: 3px;
+        background: #06065e;
+        position: absolute;
+
+        left: 10px;
+        cursor: pointer;
+    }
+
+    .Show_icon_in {
+        display: block;
+    }
+
+    .px_0 {
+        padding-right: 15px !important;
+        padding-left: 15px !important;
+    }
+
+}
+
+@media only screen and (min-width:752px) and (max-width: 863px) {
+    .card {
+        display: flex;
+        height: 280px;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .col-sm-2 {
+
+        max-width: 0;
+    }
+
+    .col-sm-10 {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+
+    .btn_menu_out {
+        width: 40px;
+        height: 40px;
+        ;
+        display: block;
+        text-align: center;
+        padding: 3px;
+        background: #06065e;
+        position: absolute;
+
+        left: 10px;
+        cursor: pointer;
+    }
+
+    .btn_menu_out i {
+        font-size: 30px;
+        color: white;
+    }
+
+
+    .Show_right {
+        max-width: 16.666667%;
+
+    }
+
+    .Show_left {
+        max-width: 83.333333%;
+
+
+
+    }
+
+    .Show_content {
+        display: flex;
+
+    }
+
+    .Show_icon_out {
+        top: -827px;
+        display: none;
+    }
+
+    .btn_menu_in {
+        width: 40px;
+        height: 40px;
+        ;
+        display: none;
+        text-align: center;
+        padding: 3px;
+        background: #06065e;
+        position: absolute;
+
+        left: 10px;
+        cursor: pointer;
+    }
+
+    .Show_icon_in {
+        display: block;
+    }
+
+    .px_0 {
+        padding-right: 15px !important;
+        padding-left: 15px !important;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    #btn-2 {
+        float: none;
+        margin-right: 37%;
+    }
+
+    #btn-3 {
+        margin-right: 45%;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .col-sm-2 {
+
+        max-width: 0;
+    }
+
+    .col-sm-10 {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+
+    .btn_menu_out {
+        width: 40px;
+        height: 40px;
+        ;
+        display: block;
+        text-align: center;
+        padding: 3px;
+        background: #06065e;
+        position: absolute;
+
+        left: 10px;
+        cursor: pointer;
+    }
+
+    .btn_menu_out i {
+        font-size: 30px;
+        color: white;
+    }
+
+
+    .Show_right {
+        max-width: 16.666667%;
+
+    }
+
+    .Show_left {
+        max-width: 83.333333%;
+
+
+
+    }
+
+    .Show_content {
+        display: flex;
+
+    }
+
+    .Show_icon_out {
+        top: -827px;
+        display: none;
+    }
+
+    .btn_menu_in {
+        width: 40px;
+        height: 40px;
+        ;
+        display: none;
+        text-align: center;
+        padding: 3px;
+        background: #06065e;
+        position: absolute;
+
+        left: 10px;
+        cursor: pointer;
+    }
+
+    .Show_icon_in {
+        display: block;
+    }
+
+    #myTab {
+        display: flex;
+    }
+
+    #tille_Donhang {
+        text-align: center;
+    }
+
+    #btn-1 {
+        margin-left: 30% !important;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    #tille_SanPham {
+        text-align: center;
+    }
+
+    #myTab {
+        margin-top: 5%;
+    }
+
+    #tille_Nhapkho {
+        text-align: center;
+    }
+
+    #tille_Doachthu {
+        text-align: center;
+    }
+
+    .px_0 {
+        padding-right: 15px !important;
+        padding-left: 15px !important;
+    }
+
+    #reset {
+        margin-top: 10px;
+    }
+
+    #reset b {
+        display: none;
+
+    }
+}

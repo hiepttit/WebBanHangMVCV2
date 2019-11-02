@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MasterAdmin</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Areas/Admin/ibs/css/tongquan.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Areas/Admin/libs/js/script.js">
+        Close();
+        Open();
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>    
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light " style="background:rgb(6, 6, 94)">
+        <div class="container-fluid" id="area1">
+
+            @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>*@
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" style="color:white" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Xin chào,Admin!
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Xem thông tin cá nhân</a>
+                            <a class="dropdown-item" href="#">Chỉnh sửa thông tin</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="./Login.html">Đăng xuất tài khoản</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="col-md-2 col-sm-2 col-4 px-0">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+               aria-controls="v-pills-home" aria-selected="true"><i class="fas fa-layer-group"></i>Tổng Quan</a>
+            <hr style="width: 100%;margin-top: 0%;margin-bottom: 0%">
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+               aria-controls="v-pills-profile" aria-selected="false"><i class="fas fa-shopping-cart"></i>Đơn hàng</a>
+            <hr style="width: 100%;margin-top: 0%;margin-bottom: 0%">
+            <a class="nav-link" id="v-pills-messages-tab" href="@Url.Content("/Admin/ProductAD/Index")" role="tab"
+               aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-check-circle"></i>Sản phẩm</a>
+            <hr style="width: 100%;margin-top: 0%;margin-bottom: 0%">
+            <a class="nav-link" id="v-pills-settings-tab" href="@Url.Content("/Admin/Customer/Customer")" role="tab"
+               aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-user"></i>Khách hàng</a>
+            <hr style="width: 100%;margin-top: 0%;margin-bottom: 0%">
+            <a class="nav-link" id="v-pills-input-tab" data-toggle="pill" href="#v-pills-account" role="tab"
+               aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-truck"></i>Nhập kho</a>
+            <hr style="width: 100%;margin-top: 0%;margin-bottom: 0%">
+            <a class="nav-link" id="v-pills-TK-tab" data-toggle="pill" href="#v-pills-tonkho" role="tab"
+               aria-controls="v-pills-tk" aria-selected="false"><i class="fas fa-warehouse"></i>Tồn kho</a>
+            <hr style="width: 100%;margin-top: 0%;margin-bottom: 0%">
+            <a class="nav-link" id="v-pills-DS-tab" data-toggle="pill" href="#v-pills-doachso" role="tab"
+               aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-chart-line"></i>Doach số</a>
+            <hr style="width: 100%;margin-top: 0%;margin-bottom: 0%">
+            <a class="nav-link" id="v-pills-LN-tab" data-toggle="pill" href="#v-pills-loinhuan" role="tab"
+               aria-controls="v-pills-settings" aria-selected="false"><i class="fab fa-bitcoin"></i>Lợi nhuận</a>
+            <hr style="width: 100%;margin-top: 0%;margin-bottom: 0%">
+            <a class="nav-link" id="v-pills-TL-tab" data-toggle="pill" href="#v-pills-thietlap" role="tab"
+               aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-cogs"></i>Thiết lập</a>
+            <hr style="width: 100%;margin-top: 0%;margin-bottom: 0%">
+
+        </div>
+
+    </div>
+    <div class="col-md-10 col-sm-10 col-8 ">
+        @RenderBody()
+    </div>
+</body>
+</html>

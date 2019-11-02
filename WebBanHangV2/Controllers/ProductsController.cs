@@ -120,7 +120,7 @@ namespace WebBanHangV2.Controllers
                     return RedirectToAction("index", "Home");
                 }
             }
-            return RedirectToAction("index", "Home");
+            return RedirectToAction("LogIn", "Home");
         }
     }
 }
