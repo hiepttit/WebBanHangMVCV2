@@ -158,10 +158,12 @@ namespace WebBanHangV2.Controllers
                         cd.CartID = item.ID;
                         cd.TheCount = cart.soLuong;
                         cd.Price = cart.ThanhTien;
+                        dao.Model.CartDetails.Add(cd);
+                        dao.Model.SaveChanges();
                         s = s + cart.ThanhTien;
                     }                  
-                    dao.Model.CartDetails.Add(cd);
-                    dao.Model.SaveChanges();
+                    
+                    
                     bill.CartID = dao.Model.Carts.OrderByDescending(y => y.ID).Select(y => y.ID).FirstOrDefault();
                     bill.TotalPrices = s;
                     if (bill.DiscountPercent != null && bill.DiscountPercent != 0)

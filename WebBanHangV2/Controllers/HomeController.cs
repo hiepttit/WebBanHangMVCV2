@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using WebBanHangV2.DAO;
 using WebBanHangV2.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace WebBanHangV2.Controllers
 {
@@ -14,12 +16,14 @@ namespace WebBanHangV2.Controllers
     {
         //
         // GET: /Home/
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             ProductsDAO dao = new ProductsDAO();
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
             var lstSP = dao.GetAllSP();
             this.ViewBag.lstSP = lstSP;
-            return View();
+            return View(lstSP.Where(p=>p.Sales==1).ToPagedList(pageNumber,pageSize));
         }
         public String ImageMainItem(int id)
         {
@@ -68,6 +72,13 @@ namespace WebBanHangV2.Controllers
         public ActionResult LogIn()
         {
             return View();
+        }
+        public ActionResult LogOut()
+        {
+            Session.Remove("User");
+            Session.Remove("UserID");
+            Session.Remove("Cart");
+            return RedirectToAction("Index");
         }
         public static string MD5Hash(string text)
         {

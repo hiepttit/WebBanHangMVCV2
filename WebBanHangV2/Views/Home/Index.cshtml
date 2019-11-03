@@ -1,7 +1,11 @@
-﻿@{
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<WebBanHangV2.Models.Product>
+@{
     ViewBag.Title = "Index";
     var lst = ViewBag.lstSP;
 }
+
 
 <!-- Hero section -->
 <section class="hero-section">
@@ -85,7 +89,7 @@
         </div>
 
         <div class="row">
-            @foreach (var item in lst)
+            @foreach (var item in Model)
             {
                 if (item.Sales == 1)
                 {
@@ -111,7 +115,11 @@
             }
         </div>
         <div class="text-center pt-5">
-            <button class="site-btn sb-line sb-dark">LOAD MORE</button>
+            @*<button class="site-btn sb-line sb-dark">LOAD MORE</button>*@
+            <br />
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("Index",new { page }))
         </div>
     </div>
 </section>

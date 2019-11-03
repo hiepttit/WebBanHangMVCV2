@@ -28,7 +28,7 @@
                         {
                             <div class="up-item">
                                 <i class="flaticon-profile"></i>
-                                <a href="@Url.Content("/Home/LogIn")">@Session["UserID"] </a> <span style="margin-left:70px"></span> <i class="flaticon-logout"></i><a href="@Url.Content("/Home/Register")">LogOut</a>
+                                <a href="#">@Session["UserID"] </a> <span style="margin-left:70px"></span> <i class="flaticon-logout"></i><a href="@Url.Content("/Home/LogOut")">LogOut</a>
                             </div>
                         }
                         @Html.Action("CartPartial", "Cart")
