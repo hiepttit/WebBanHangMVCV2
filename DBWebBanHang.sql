@@ -1,4 +1,6 @@
 -- use master drop database WebBanHang
+use master
+go
 Create database WebBanHang
 go
 use WebBanHang
@@ -1251,12 +1253,10 @@ insert into ProductsImg (ProductID,ImgLink) values (74,'a22-sau05092019134346176
 insert into ProductsImg (ProductID,ImgLink) values (74,'a22-1050920191343461764.jpg')
 go
 
-SET IDENTITY_INSERT Roles off
+SET IDENTITY_INSERT Roles on
 INSERT INTO Roles (ID, RolesName) VALUES ( 1,'User')
 INSERT INTO Roles (ID, RolesName) VALUES ( 2,'Admin')
-select *from Bill
-select *from Customer
-select *from Cart
-select *from Account
-SET IDENTITY_INSERT Account off
+SET IDENTITY_INSERT Roles off
+SET IDENTITY_INSERT Account on
 INSERT INTO Account(ID, UserName,Pwd,RoleID) VALUES ( 1,'admin','21232f297a57a5a743894a0e4a801fc3',2)
+SET IDENTITY_INSERT Account off

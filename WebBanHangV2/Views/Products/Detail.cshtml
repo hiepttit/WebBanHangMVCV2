@@ -79,17 +79,23 @@
                 </div>
                 <div class="quantity">
                     <p>Quantity</p>
-                    <div class="pro-qty"><input type="text" value="1"></div>
+                    <div class="pro-qty"><input id="soLuong" type="text" value="1"></div>
                 </div>
                 <div class="form-format">
                     @using (Html.BeginForm("InsertCart", "Products", new { id = @ViewBag.item.ID}))
                     {
                         <button type="submit" class="site-btn" value="BUY" id="btn_Cart"><i class="flaticon-bag"></i><span>BUY</span></button>
-                    }          
-                    @using (Html.BeginForm("AddCart", "Cart", new { @productID = @ViewBag.item.ID, @Url = Request.Url.ToString() }))
-                    {
-                        <button type="submit" class="site-btn" value="ADD TO CART" id="btn_Cart"><i class="flaticon-bag"></i><span>ADD TO CART</span></button>
                     }
+                    <button type="button" onclick="addCart()" class="site-btn" value="ADD TO CART" id="btn_Cart"><i class="flaticon-bag"></i><span>ADD TO CART</span></button>        
+                    <script>
+                        function addCart() {
+                            var link = "http://" + document.location.host + "/Cart/AddCart";
+                            var soLuong = document.getElementById("soLuong").value;
+                            $.post(link, { productID : @ViewBag.item.ID, soLuong: soLuong }, function (data) {
+                                alert(data);
+                            });
+                        }
+                    </script>
                 </div>
                 @*<a href="#" class="site-btn"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>*@
                 <div id="accordion" class="accordion-area">

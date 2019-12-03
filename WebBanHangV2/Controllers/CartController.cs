@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebBanHangV2.DAO;
 using WebBanHangV2.Models;
+using System.Net.Http;
 
 namespace WebBanHangV2.Controllers
 {
@@ -22,7 +23,8 @@ namespace WebBanHangV2.Controllers
             }
             return lstCart;
         }
-        public ActionResult AddCart(int productID, string Url)
+        [HttpPost]
+        public string AddCart(int productID, string soLuong)
         {
             Product pr = db.Products.SingleOrDefault(p => p.ID == productID);
             if (pr == null)
@@ -30,20 +32,23 @@ namespace WebBanHangV2.Controllers
                 Response.StatusCode = 404;
                 return null;
             }
+            int temp;
+            if(!int.TryParse(soLuong,out temp))
+               return "Fail, amount is wrong type";
             List<GioHang> lstCart = GetCart();
             //Kiểm tra sp đã tồn tại chưa
             GioHang cart = lstCart.Find(n => n.productID == productID);
             if (cart == null)
             {
                 cart = new GioHang(productID);
+                cart.soLuong = temp;
                 lstCart.Add(cart);
-                return Redirect(Url);
             }
             else
             {
-                cart.soLuong++;
-                return Redirect(Url);
+                cart.soLuong+=temp;
             }
+            return "Success";
         }
         public ActionResult UpdateCart(int productID, string f)
         {
