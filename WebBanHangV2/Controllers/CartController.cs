@@ -104,6 +104,7 @@ namespace WebBanHangV2.Controllers
                 return RedirectToAction("index", "Home");
             }
             List<GioHang> lstCart = GetCart();
+            ViewBag.lstRandom = GetRandomList();
             return View(lstCart);
         }
         private int SumAmount()
@@ -183,6 +184,22 @@ namespace WebBanHangV2.Controllers
                 }
             }
             return RedirectToAction("LogIn", "Home");
+        }
+        private List<Product> GetRandomList(int count = 4)
+        {
+            //return this.ViewBag.lstRelatedProducts = dao.Model.Products.Where(x => x.CategoryID == old.CategoryID).Take(4);
+            List<Product> lst = new List<Product>();
+            Random rand = new Random();
+            ProductsDAO dao = new ProductsDAO();
+            int max = dao.Model.Products.Count();
+            while (lst.Count < 4)
+            {
+                var temp = dao.Model.Products.ToList()[rand.Next(0,max)];
+                if (lst.Find(x => x.ID == temp.ID) != null)
+                    continue;
+                lst.Add(temp);
+            }
+            return lst;
         }
     }
 }
