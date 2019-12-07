@@ -36,13 +36,13 @@
             {
                 <tr>
                     <td>@item.ID</td>
-                    <td style="width:25%">@item.ProductName</td>
-                    <td style="width:25%">@item.Details</td>
-                    <td>@item.Prices</td>
+                    <td style="width:25%" id="pro_name_@item.ID">@item.ProductName</td>
+                    <td style="width:25%" id="pro_detail_@item.ID">@item.Details</td>
+                    <td id="pro_price_@item.ID">@item.Prices</td>
                     <td class="text-center">
-                        <button type="button" style="width:40%" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="myFunction(@item.ID,'@item.ProductName','@item.Details',@item.Prices)">Update</button>
-                        <button type="button" style="width:40%" class="btn btn-primary" data-toggle="modal" data-target="#myModalDelete" onclick="myFunctionDelete(@item.ID,'@item.ProductName','@item.Details',@item.Prices)">Delete</button>
-                        <button type="button" style="width:40%" class="btn btn-primary" data-toggle="modal" data-target="#myModalImage" onclick="myFunction(@item.ID,'@item.ProductName','@item.Details',@item.Prices)">UpLoadImage</button>
+                        <button type="button" style="width:40%" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="myFunction22('@item.ID')">Update</button>
+                        <button type="button" style="width:40%" class="btn btn-primary" data-toggle="modal" data-target="#myModalDelete" onclick="myFunctionDelete(@item.ID)">Delete</button>
+                        <button type="button" style="width:40%" class="btn btn-primary" data-toggle="modal" data-target="#myModalImage" onclick="myFunction(@item.ID)">UpLoadImage</button>
 
                     </td>
                 </tr>
@@ -77,7 +77,7 @@
                         </div>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="Detail" type="text" class="form-control" name="Detail" placeholder="Detail">
+                            <textarea rows="5" id="Detail" type="text" class="form-control" name="Detail" placeholder="Detail"></textarea>
                         </div>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -163,7 +163,7 @@
                         </div>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="DetailDelete" type="text" class="form-control" name="Detail" placeholder="Detail">
+                            <textarea rows="5" id="DetailDelete" type="text" class="form-control" name="Detail" placeholder="Detail"></textarea>
                         </div>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -217,18 +217,18 @@
         else
             document.getElementById("idCategory").value = "";
     }
-    function myFunction(id, name, detail,price) {
+    function myFunction22(id) {
         document.getElementById("IDSP").value = id;
-        document.getElementById("Name").value = name;
-        document.getElementById("Detail").value = detail;
-        document.getElementById("Price").value = price;
+        document.getElementById("Name").value = document.getElementById("pro_name_"+id).innerHTML;
+        document.getElementById("Detail").value = document.getElementById("pro_detail_" + id).innerHTML;
+        document.getElementById("Price").value = document.getElementById("pro_price_" + id).innerHTML;
         return;
     }
-    function myFunctionDelete(id, name, detail, price) {
+    function myFunctionDelete(id) {
         document.getElementById("IDSPDelete").value = id;
-        document.getElementById("NameDelete").value = name;
-        document.getElementById("DetailDelete").value = detail;
-        document.getElementById("PriceDelete").value = price;
+        document.getElementById("NameDelete").value = document.getElementById("pro_name_" + id).innerHTML;
+        document.getElementById("DetailDelete").value = document.getElementById("pro_detail_" + id).innerHTML;
+        document.getElementById("PriceDelete").value = document.getElementById("pro_price_" + id).innerHTML;
         return;
     }
     function insert() {
